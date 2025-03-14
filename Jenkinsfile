@@ -8,7 +8,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh './pavan'  // Run the compiled app
+                sh './app'  // Run the compiled app
             }
         }
         stage('Deploy') {
