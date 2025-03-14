@@ -1,35 +1,23 @@
-
 pipeline {
-    agent any  // Runs on any available agent
-
+    agent any
     stages {
         stage('Build') {
             steps {
-                echo 'Building the application...'
-                sh 'PES1UG22AM113 main.cpp'  // Replace with actual build command
+                sh 'g++ -o app main.cpp'  // Compile C++ file
             }
         }
-
         stage('Test') {
             steps {
-                echo 'Running tests...'
-                sh 'PES1UG22AM113'  // Replace with actual test command
+                sh './app'  // Run the compiled app
             }
         }
-
         stage('Deploy') {
             steps {
-                echo 'Deploying the application...'
-                sh 'make deploy'  // Replace with actual deploy command
+                echo '🚀 Deployment Done!'
             }
         }
     }
-
     post {
-        success {
-            echo 'Pipeline executed successfully!'
-        }
-        
         failure {
             echo '🚨 Pipeline Failed!'
         }
